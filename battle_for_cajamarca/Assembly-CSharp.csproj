@@ -52,7 +52,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\scripts\CameraTactique.cs" />
+     <Compile Include="Assets\scripts\Fantassin.cs" />
      <Compile Include="Assets\scripts\MenuScript.cs" />
+     <Compile Include="Assets\scripts\TactiqueMouvement.cs" />
      <Compile Include="Assets\scripts\Tile.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>B:/Fast_Jeux/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
