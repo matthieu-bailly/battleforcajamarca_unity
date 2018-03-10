@@ -12,6 +12,10 @@ public class Fantassin : TactiqueMouvement {
 	// Update is called once per frame
 	void Update () {
 
+		if (!turn) {
+			return;
+		}
+
 		if (!moving) {
 			FindSelectableTiles ();
 			CheckMouse ();

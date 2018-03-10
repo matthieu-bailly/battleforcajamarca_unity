@@ -16,6 +16,10 @@ public class Tile : MonoBehaviour
 	public Tile parent = null;
 	public int distance = 0;
 
+	public float f = 0;
+	public float g = 0;
+	public float h = 0;
+
 
 
 	// Use this for initialization
@@ -51,19 +55,21 @@ public class Tile : MonoBehaviour
 		visited = false;
 		parent = null;
 		distance = 0;
+
+		f = g = h = 0;
 	}
 
-	public void RadarVoisin ()
+	public void RadarVoisin (Tile target)
 	{
 		Reset ();
 
-		TileChecker (Vector3.forward);
-		TileChecker (-Vector3.forward);
-		TileChecker (Vector3.right);
-		TileChecker (-Vector3.right);
+		TileChecker (Vector3.forward, target);
+		TileChecker (-Vector3.forward, target);
+		TileChecker (Vector3.right, target);
+		TileChecker (-Vector3.right, target);
 	}
 
-	public void TileChecker (Vector3 direction)
+	public void TileChecker (Vector3 direction, Tile target)
 	{
 		Vector3 halfExtents = new Vector3 (0.25f, 0.25f, 0.25f);
 		Collider[] colliders = Physics.OverlapBox (transform.position + direction, halfExtents);
@@ -73,7 +79,7 @@ public class Tile : MonoBehaviour
 			if (tile != null && tile.walkable) {
 
 				RaycastHit hit;
-				if (!Physics.Raycast (tile.transform.position, Vector3.up, out hit, 1)) {
+				if (!Physics.Raycast (tile.transform.position, Vector3.up, out hit, 1) || (tile == target)) {
 
 					ListeCasesAdjacentes.Add (tile);
 				}

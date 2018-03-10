@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tile
   - Fantassin
+  - NPC
   layers:
   - Default
   - TransparentFX
